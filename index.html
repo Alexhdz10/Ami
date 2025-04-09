@@ -78,17 +78,25 @@
   <header>
     <h1>Para ti, Ami 💌</h1>
     <div class="botones-inicio" id="menu">
-      <button class="boton" data-seccion="carta">Carta</button>
-      <button class="boton" data-seccion="video">Para ti</button>
-      <button class="boton" data-seccion="poema">Un poema</button>
-      <button class="boton" data-seccion="animo">Mensajes de ánimo</button>
+      <button class="boton" onclick="mostrarSeccion('carta')">Carta</button>
+      <button class="boton" onclick="mostrarSeccion('video')">Para ti</button>
+      <button class="boton" onclick="mostrarSeccion('poema')">Un poema</button>
+      <button class="boton" onclick="mostrarSeccion('animo')">Mensajes de ánimo</button>
     </div>
   </header>
 
   <!-- Carta -->
   <div id="carta" class="seccion">
     <h2>Una carta para ti 💖</h2>
-    <p>Aquí irá el contenido de la carta en parrafitos (lo que ya hicimos antes, lo adaptamos aquí)...</p>
+    <p>
+      Ami, no sé exactamente por lo que estás pasando, pero quiero que sepas que no estás sola.  
+      A veces la vida nos pone pruebas muy difíciles, pero también nos da personas que están dispuestas a caminar a tu lado,  
+      incluso si no saben a dónde vas. Y yo quiero ser una de esas personas para ti.  
+      No necesitas explicarme nada, solo quiero que sepas que aquí estoy, para escucharte, apoyarte o simplemente hacerte compañía en silencio.  
+      Me importa mucho tu bienestar, y aunque no siempre pueda estar cerca, siempre estaré disponible para ti.  
+      Siempre tienes en mí un apoyo incondicional.  
+      Te aprecio más de lo que las palabras pueden expresar, y quiero que nunca olvides lo valiosa que eres.
+    </p>
     <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
   </div>
 
@@ -96,8 +104,7 @@
   <div id="video" class="seccion">
     <h2>Un pequeño detalle 🎥</h2>
     <p>Este video es solo para ti, ojalá te saque una sonrisa 💜</p>
-    <!-- Puedes reemplazar este enlace con uno que tú tengas -->
-    <iframe width="100%" height="315" src="https://www.youtube.com/embed/_TU7TR_-dL0" frameborder="0" allowfullscreen></iframe>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Q3mTEVYaz1w" frameborder="0" allowfullscreen></iframe>
     <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
   </div>
 
@@ -129,7 +136,6 @@
   </div>
 
   <script>
-    // Función para mostrar la sección correspondiente
     function mostrarSeccion(id) {
       document.getElementById('menu').style.display = 'none';
       const secciones = document.querySelectorAll('.seccion');
@@ -137,24 +143,11 @@
       document.getElementById(id).classList.add('visible');
     }
 
-    // Función para volver al inicio
     function volverInicio() {
       const secciones = document.querySelectorAll('.seccion');
       secciones.forEach(sec => sec.classList.remove('visible'));
       document.getElementById('menu').style.display = 'flex';
     }
-
-    // Esperamos a que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', function() {
-      // Obtener todos los botones
-      const botones = document.querySelectorAll('.boton[data-seccion]');
-      botones.forEach(boton => {
-        boton.addEventListener('click', function() {
-          const seccionId = this.getAttribute('data-seccion');
-          mostrarSeccion(seccionId);
-        });
-      });
-    });
   </script>
 
 </body>
