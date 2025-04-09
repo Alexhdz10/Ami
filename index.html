@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Ami 💜</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e8dff5;
+      color: #3d2c53;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .botones-inicio {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .boton {
+      background-color: #a98fdc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 250px;
+      text-align: center;
+    }
+
+    .boton:hover {
+      background-color: #8e72c1;
+    }
+
+    .seccion {
+      display: none;
+      max-width: 700px;
+      padding: 20px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    .volver {
+      margin-top: 30px;
+      background-color: #d5c0f1;
+      color: #3d2c53;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Para ti, Ami 💌</h1>
+    <div class="botones-inicio" id="menu">
+      <button class="boton" data-seccion="carta">Carta</button>
+      <button class="boton" data-seccion="video">Para ti</button>
+      <button class="boton" data-seccion="poema">Un poema</button>
+      <button class="boton" data-seccion="animo">Mensajes de ánimo</button>
+    </div>
+  </header>
+
+  <!-- Carta -->
+  <div id="carta" class="seccion">
+    <h2>Una carta para ti 💖</h2>
+    <p>Aquí irá el contenido de la carta en parrafitos (lo que ya hicimos antes, lo adaptamos aquí)...</p>
+    <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
+  </div>
+
+  <!-- Video -->
+  <div id="video" class="seccion">
+    <h2>Un pequeño detalle 🎥</h2>
+    <p>Este video es solo para ti, ojalá te saque una sonrisa 💜</p>
+    <!-- Puedes reemplazar este enlace con uno que tú tengas -->
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/_TU7TR_-dL0" frameborder="0" allowfullscreen></iframe>
+    <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
+  </div>
+
+  <!-- Poema -->
+  <div id="poema" class="seccion">
+    <h2>Un poema para tu alma 🌷</h2>
+    <p>
+      A veces la vida pesa,<br/>
+      pero tú sigues brillando.<br/>
+      Aunque todo parezca gris,<br/>
+      tu luz nunca deja de estar.<br/>
+      <br/>
+      Porque eres más fuerte de lo que crees,<br/>
+      y más querida de lo que imaginas.
+    </p>
+    <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
+  </div>
+
+  <!-- Mensajes de ánimo -->
+  <div id="animo" class="seccion">
+    <h2>Mensajes de ánimo ✨</h2>
+    <ul>
+      <li>🌟 Eres suficiente, exactamente como eres.</li>
+      <li>💜 No estás sola, aquí estoy contigo.</li>
+      <li>🌈 Todo va a mejorar, poco a poco, paso a paso.</li>
+      <li>🌻 Hoy es difícil, pero el sol siempre regresa.</li>
+    </ul>
+    <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
+  </div>
+
+  <script>
+    // Función para mostrar la sección correspondiente
+    function mostrarSeccion(id) {
+      document.getElementById('menu').style.display = 'none';
+      const secciones = document.querySelectorAll('.seccion');
+      secciones.forEach(sec => sec.classList.remove('visible'));
+      document.getElementById(id).classList.add('visible');
+    }
+
+    // Función para volver al inicio
+    function volverInicio() {
+      const secciones = document.querySelectorAll('.seccion');
+      secciones.forEach(sec => sec.classList.remove('visible'));
+      document.getElementById('menu').style.display = 'flex';
+    }
+
+    // Esperamos a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+      // Obtener todos los botones
+      const botones = document.querySelectorAll('.boton[data-seccion]');
+      botones.forEach(boton => {
+        boton.addEventListener('click', function() {
+          const seccionId = this.getAttribute('data-seccion');
+          mostrarSeccion(seccionId);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
